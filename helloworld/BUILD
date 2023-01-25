@@ -14,3 +14,21 @@ pex_binary(
     name="pex_binary",
     entry_point="main.py",
 )
+
+
+pex_binary(
+    name="feast-cli",
+    entry_point="feast.cli:cli",
+    dependencies=[
+        "//:reqs#feast"
+    ],
+)
+
+
+pex_binary(
+    name="feast-cli-aws",
+    entry_point="feast.cli:cli",
+    dependencies=[
+        "//:reqs#feast[aws]"
+    ],
+)
