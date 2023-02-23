@@ -1,0 +1,2 @@
+# Default image in case this chart is used by other tools after being published
+image: example.com/registry/my-app:latest

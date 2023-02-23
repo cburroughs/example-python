@@ -1,0 +1,3 @@
+# Default values common to all deployments
+env:
+  SERVICE_NAME: my-service

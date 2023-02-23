@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my_pod
+  labels:
+    chart: "{{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}"
+spec:
+  containers:
+    - name: my_app
+      # Uses the `image` value entry from the deployment inputs
+      image: {{ .Values.image }}
