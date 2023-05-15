@@ -7,11 +7,4 @@
 
 
 
-# __defaults__(
-#     {
-#         (python_test, python_tests, python_requirement, python_requirements, python_source, python_sources): resolve=parameterize("default", "def37")
-#     }
-# )
-
-
-python_requirements(name="reqs")
+python_requirements(name="reqs", resolve=parametrize("default", "def37"))

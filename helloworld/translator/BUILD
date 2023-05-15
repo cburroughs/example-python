@@ -2,12 +2,12 @@
 # Licensed under the Apache License, Version 2.0 (see LICENSE).
 
 # This target sets the metadata for all the Python non-test files in this directory.
-python_sources(
+python_310_and_37_sources(
     name="lib",
 )
 
 # This target sets the metadata for all the Python test files in this directory.
-python_tests(
+python_310_and_37_tests(
     name="tests",
 )
 
@@ -17,14 +17,14 @@ python_tests(
 # Because this target has no source code, Pants cannot infer dependencies. We depend on `:lib`,
 #  which means we'll include all the non-test Python files in this directory, and any of
 #  their dependencies.
-python_distribution(
-    name="dist",
-    dependencies=[":lib"],
-    wheel=True,
-    sdist=True,
-    provides=setup_py(
-        name="helloworld.translator",
-        version="0.0.1",
-        description="A language translator.",
-    ),
-)
+# python_distribution(
+#     name="dist",
+#     dependencies=[":lib"],
+#     wheel=True,
+#     sdist=True,
+#     provides=setup_py(
+#         name="helloworld.translator",
+#         version="0.0.1",
+#         description="A language translator.",
+#     ),
+# )

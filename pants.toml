@@ -3,6 +3,7 @@
 
 [GLOBAL]
 pants_version = "2.16.0rc1"
+build_file_prelude_globs = ["macros.py"]
 backend_packages.add = [
   "pants.backend.build_files.fmt.black",  
   "pants.backend.python",
@@ -23,21 +24,20 @@ repo_id = "3B1D361B-E9F1-49A8-B761-03DCC41FD58E"
 root_patterns = ["/"]
 
 [python]
-# The default interpreter constraints for code in this repo. Individual targets can override
-#  this with the `interpreter_constraints` field. See
-#  https://www.pantsbuild.org/docs/python-interpreter-compatibility.
-
-# Modify this if you don't have Python 3.9 on your machine.
-# This can be a range, such as [">=3.8,<3.11"], but it's usually recommended to restrict
-# to a single minor version.
 interpreter_constraints = ["==3.10.*"]
-
-# Enable the "resolves" mechanism, which turns on lockfiles for user code. See
-# https://www.pantsbuild.org/docs/python-third-party-dependencies. This also adds the
-# `generate-lockfiles` goal for Pants to generate the lockfile for you.
+default_resolve = "default"
 enable_resolves = true
+run_against_entire_lockfile = true
 
-resolves = { python-default = "python-default.lock"}
+
+[python.resolves]
+default = "python-default.lock"
+def37 = "python-3.7.lock"
+
+[python.resolves_to_interpreter_constraints]
+default = ["CPython==3.10.*"]
+def37 = ["CPython>=3.7.1,<3.8"]
+
 
 [python-bootstrap]
 # We search for interpreters both on the $PATH and in the `$(pyenv root)/versions` folder.

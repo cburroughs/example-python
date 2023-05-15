@@ -6,6 +6,7 @@
 [GLOBAL]
 dynamic_ui = false
 colors = true
+named_caches_dir = '.cache/pants/named_caches'
 
 # Set to `true` if you have a Pants remote cache provider available for CI builds
 remote_cache_read = false
@@ -14,7 +15,3 @@ remote_cache_write = false
 [pytest]
 args = ["-vv", "--no-header"]
 
-# Toolchain plugin auth configuration
-[auth]
-from_env_var = "TOOLCHAIN_AUTH_TOKEN"
-org = "pantsbuild"
