@@ -2,7 +2,7 @@
 # Licensed under the Apache License, Version 2.0 (see LICENSE).
 
 [GLOBAL]
-pants_version = "2.23.0"
+pants_version = "2.24.0"
 backend_packages.add = [
   "pants.backend.build_files.fmt.black",  
   "pants.backend.python",
@@ -11,6 +11,7 @@ backend_packages.add = [
   "pants.backend.python.lint.flake8",
   "pants.backend.python.lint.isort",
   "pants.backend.python.typecheck.mypy",
+  "pants.backend.experimental.adhoc",
 ]
 
 [anonymous-telemetry]
@@ -44,3 +45,13 @@ resolves = { python-default = "python-default.lock"}
 #  problematic system Pythons. See
 #  https://www.pantsbuild.org/docs/python-interpreter-compatibility#changing-the-interpreter-search-path.
 search_path = ["<PATH>", "<PYENV>"]
+
+
+[system-binaries]
+system_binary_paths = [
+  '<PATH>',
+  '/usr/bin',
+  '/bin',
+  '/usr/local/bin',
+  '/opt/homebrew/bin',
+]
