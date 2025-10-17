@@ -18,8 +18,7 @@ enabled = true
 repo_id = "3B1D361B-E9F1-49A8-B761-03DCC41FD58E"
 
 [source]
-# The Python source root is the repo root. See https://www.pantsbuild.org/docs/source-roots.
-root_patterns = ["/"]
+root_patterns = ["/foo/", "/bar/", "/bax/"]
 
 [python]
 # The default interpreter constraints for code in this repo. Individual targets can override
@@ -37,6 +36,18 @@ interpreter_constraints = ["==3.12.*"]
 enable_resolves = true
 
 resolves = { python-default = "python-default.lock"}
+
+[mypy]
+args = [
+  "--explicit-package-bases",
+  "--check-untyped-defs"
+]
+requirements = [
+  "//:reqs#mypy",
+]
+install_from_resolve = "python-default"
+
+
 
 [python-bootstrap]
 # We search for interpreters both on the $PATH and in the `$(pyenv root)/versions` folder.
